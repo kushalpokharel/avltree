@@ -39,6 +39,8 @@
 			<Add library="sfml-system" />
 			<Add directory="D:/codeblocks/sfml/lib" />
 		</Linker>
+		<Unit filename="avl.cpp" />
+		<Unit filename="avl.h" />
 		<Unit filename="boxes.cpp" />
 		<Unit filename="boxes.h" />
 		<Unit filename="game.cpp" />
