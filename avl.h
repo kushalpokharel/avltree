@@ -1,12 +1,6 @@
 #pragma once
 #include "node.h"
-
-struct node
-{
-    int data;
-    struct node* left;
-    struct node* right;
-};
+#include "window.h"
 
 class Avl
 {
@@ -27,16 +21,29 @@ public:
     int find_min(struct node* a);
     void display();
     void bfs(node* root);
-    void printGivenLevel(node* root, int level);
+    void printGivenLevel(node* root, int level, int );
     void preorder(struct node* a);
     void inorder(struct node* a);
     void print_height();
     int height(struct node* ro);
     int auxheight(struct node* ptr);
+    void render(Window &w);
+    void levels(node*,int,Window&);
+    std::string numtostr(int);
+    using Nodecont=std::vector<node>;
+    Nodecont container;
+    static int mat[5][32];
+    void setpos(struct node* ,int );
 private:
-    Node nodes[15];
+//    Node nodes[15];
     int available;
     struct node* root;
     int total;
+    int xpos;
+    int ypos;
+    static int called;
+    static int counter;
+    static int calls;
+   // Window win;
     //int num;
 };

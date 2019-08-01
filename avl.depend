@@ -447,21 +447,21 @@
 	<iostream>
 	<SFML/Graphics.hpp>
 
-1564061631 d:\avl\boxes.h
+1564143716 d:\avl\boxes.h
 	<iostream>
 	"window.h"
 	<SFML/Graphics.hpp>
 	"avl.h"
 
-1563871002 d:\avl\window.h
+1564660452 d:\avl\window.h
 	<string>
 	<SFML/Window.hpp>
 	<SFML/Graphics.hpp>
 
-1564065969 source:d:\avl\game.cpp
+1564669896 source:d:\avl\game.cpp
 	"game.h"
 
-1564061819 d:\avl\game.h
+1564072924 d:\avl\game.h
 	"window.h"
 	"boxes.h"
 	"node.h"
@@ -472,14 +472,14 @@
 	<iostream>
 	"game.h"
 
-1564039006 source:d:\avl\node.cpp
+1564651100 source:d:\avl\node.cpp
 	"node.h"
 
-1563875395 source:d:\avl\window.cpp
+1564660452 source:d:\avl\window.cpp
 	"window.h"
 	<SFML/Graphics.hpp>
 
-1564060120 d:\avl\node.h
+1564652384 d:\avl\node.h
 	<SFML/Graphics.hpp>
 	<SFML/Window.hpp>
 	<SFML/Network.hpp>
@@ -559,11 +559,13 @@
 	<SFML/Network/IpAddress.hpp>
 	<vector>
 
-1564059884 d:\avl\avl.h
+1564660111 d:\avl\avl.h
 	"node.h"
+	"window.h"
 
-1564066173 source:d:\avl\avl.cpp
+1564671239 source:d:\avl\avl.cpp
 	"avl.h"
 	<iostream>
 	<string>
+	<sstream>
 

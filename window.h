@@ -24,6 +24,7 @@ class Window
     void ToggleFullscreen();
     void Draw(sf::Drawable &l_drawable);
     bool m_isDone;
+    void clears();
 
   private:
 	void Setup(const std::string title, const sf::Vector2u &size);

@@ -38,6 +38,11 @@ void Window::ToggleFullscreen(){
 	Create();
 }
 
+void Window::clears()
+{
+    m_window.clear();
+}
+
 /*void Window::Update(){
 	sf::Event event;
 	while(m_window.pollEvent(event)){

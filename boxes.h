@@ -25,7 +25,7 @@ private:
     int tag;
     std::string s;
     sf::Text inside;
-    Avl avl;
+   // Avl avl;
     string del;
 };
 

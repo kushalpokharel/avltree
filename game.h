@@ -21,7 +21,7 @@ class Game
         void update();
         void render();
         Window m_window;
-        sf::CircleShape circle;
+        //sf::CircleShape circle;
         int nodetag;
         Avl avl;
 };

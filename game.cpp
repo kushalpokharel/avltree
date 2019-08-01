@@ -4,9 +4,6 @@
 Game::Game()
 {
     static int tag=-1;
-    circle.setRadius(10);
-    circle.setPosition(10,10);
-    circle.setFillColor(sf::Color::Cyan);
     nodetag=tag;
     ins.settype(1);
     del.settype(2);
@@ -33,6 +30,7 @@ void Game::processevents()
       if(c!="")
         avl.add(c);
       d=del.event( m_window,event);
+      //cout<<"d"<<d;
       if(d!="")
         avl.del(d);
       e=serch.event( m_window,event);
@@ -49,14 +47,13 @@ void Game::render()
 {
 //    int i;
     m_window.BeginDraw();
-    m_window.Draw(circle);
     ins.Render(m_window,"Insert");
     del.Render(m_window,"Delete");
     serch.Render(m_window,"Search");
-   /* for(i=0;i<15;i++)
-    {
-        nodes[i].Render(*(m_window.GetRenderWindow()));
-    }*/
+
+    avl.render(m_window);
     m_window.EndDraw();
 }
+
+
 
