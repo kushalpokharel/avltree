@@ -8,13 +8,14 @@ int Avl::called=0;
 int Avl::counter=0;
 int Avl::mat[5][32]={0};
 int Avl::calls=0;
+int Avl::num=0;
 
 Avl::Avl()
 {
     available=0;
     total=0;
     root=NULL;
-    xpos=500;
+    xpos=600;
     ypos=100;
     called =0;
 }
@@ -37,6 +38,7 @@ void Avl:: add(std::string a)
     auxadd(n,root);
     called++;
     display();
+    cout<<"called"<<called;
 }
 
 struct node* Avl:: auxadd(int key,struct node* ptr)
@@ -150,7 +152,7 @@ void Avl:: del(std::string a)
         cout<<"NULL WRD~~";
     auxdel(root,n);
     display();
-    called--;
+    cout<<"called"<<called;
 };
 
 struct node* Avl:: auxdel(struct node* rot, int key)
@@ -161,6 +163,7 @@ struct node* Avl:: auxdel(struct node* rot, int key)
     if(key == rot->data)
     {
         cout<<"del"<<rot->data;
+        called--;
         if(rot->left==NULL)
         {
             struct node* hold=rot->right;
@@ -274,9 +277,35 @@ void Avl:: display()
         cout<<endl;
     }
     ypos=100;
+    setedges(root,container[0].getPosition());
+    cout<<"here";
 }
 
-void Avl::setpos(struct node*r ,int data )
+void Avl:: setedges(struct node* r,sf::Vector2f pos)
+{
+    cout<<"no";
+    if(r->left==NULL && r->right==NULL)
+        return;
+    if(r->left != NULL)
+    {
+        class edge* e = new edge();
+        e->create(pos,sf::Vector2f (pos.x-75,pos.y+50));
+        edges.push_back(*e);
+        num++;
+        setedges(r->left,sf::Vector2f (pos.x-75,pos.y+50));
+    }
+    if(r->right!= NULL)
+    {
+        class edge* e = new edge();
+        e->create(pos,sf::Vector2f (pos.x+75,pos.y+50));
+        edges.push_back(*e);
+        num++;
+        setedges(r->right,sf::Vector2f (pos.x+75,pos.y+50));
+    }
+
+}
+
+void Avl:: setpos(struct node*r ,int data )
 {
     if(r->data==data)
     {
@@ -285,7 +314,7 @@ void Avl::setpos(struct node*r ,int data )
         c->setString(numtostr(data));
         container.push_back(*c);
         total++;
-        xpos=500;
+        xpos=600;
         //ypos=100;
     }
     else if(data<r->data)
@@ -336,11 +365,23 @@ void Avl:: printGivenLevel(node* root, int level, int lev)
 
 }
 
-void Avl:: preorder(struct node* a)
+void Avl::sear(std::string s)
+{
+    int i;
+    for(i=0;i<total;i++)
+    {
+        if(container[i].st==s)
+        {
+            cout<<"color";
+            container[i].highlight();
+        }
+    }
+}
+
+void Avl::preorder(struct node* a)
 {
     if(a==NULL)
     {
-        cout<<"pre";
         return;
     }
     cout<<a->data<<endl;
@@ -400,6 +441,10 @@ void Avl::render(Window &l_win)
     for(i=0;i<total;i++)
     {
         container[i].Render(l_win.GetRenderWindow());
+    }
+    for(i=0;i<num;i++)
+    {
+        edges[i].render(l_win);
     }
 }
 

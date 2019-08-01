@@ -35,7 +35,7 @@ void Game::processevents()
         avl.del(d);
       e=serch.event( m_window,event);
       if(e!="")
-        cout<<"well..";
+        avl.sear(e);
    }
 }
 void Game::update()

@@ -19,6 +19,7 @@ struct node
        void highlight();
        int posx;
        int posy;
+       std::string st;
 
    private:
         sf::Vector2f m_position;

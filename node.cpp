@@ -21,7 +21,7 @@ void node::Create(int x, int y)
     posx=x;
     posy=y;
     nodeshape.setPosition(x,y);
-    text.setPosition(x+31,y+35);
+    text.setPosition(x+35,y+35);
     sf::FloatRect textRect = nodeshape.getLocalBounds();
     text.setOrigin(textRect.left + textRect.width/2.0f,textRect.top  + textRect.height/2.0f);
 }
@@ -29,7 +29,7 @@ void node::Create(int x, int y)
 void node::Create(int x, int y, std::string a)
 {
     nodeshape.setPosition(x,y);
-    text.setPosition(x+31,y+35);
+    text.setPosition(x+52,y+35);
     sf::FloatRect textRect = nodeshape.getLocalBounds();
     text.setOrigin(textRect.left + textRect.width/2.0f,textRect.top  + textRect.height/2.0f);
     text.setString(a);
@@ -37,6 +37,7 @@ void node::Create(int x, int y, std::string a)
 
 void node::setString(std::string str)
 {
+    st=str;
     text.setString(str);
 }
 

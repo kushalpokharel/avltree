@@ -1,6 +1,8 @@
 #pragma once
 #include "node.h"
 #include "window.h"
+#include "edge.h"
+#include<SFML/Graphics.hpp>
 
 class Avl
 {
@@ -32,8 +34,12 @@ public:
     std::string numtostr(int);
     using Nodecont=std::vector<node>;
     Nodecont container;
+    using edgecont=std::vector<edge>;
+    edgecont edges;
     static int mat[5][32];
     void setpos(struct node* ,int );
+    void sear(std::string s);
+    void setedges(struct node* ,sf::Vector2f);
 private:
 //    Node nodes[15];
     int available;
@@ -44,6 +50,7 @@ private:
     static int called;
     static int counter;
     static int calls;
+    static int num;
    // Window win;
     //int num;
 };
