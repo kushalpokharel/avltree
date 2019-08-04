@@ -50,7 +50,12 @@ private:
     static int called;
     static int counter;
     static int calls;
+    static int calls2;
     static int num;
+    std::string in;
+    std::string pre;
+    sf::Text ino;
+    sf::Text preo;
    // Window win;
     //int num;
 };

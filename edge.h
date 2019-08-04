@@ -13,4 +13,5 @@ public:
     sf::Vector2f nodea;
     sf::Vector2f nodeb;
     int rotation;
+    float length;
 };

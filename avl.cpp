@@ -2,12 +2,15 @@
 #include<iostream>
 #include<string>
 #include<sstream>
+
+extern sf::Font font;
 using namespace std;
 
 int Avl::called=0;
 int Avl::counter=0;
 int Avl::mat[5][32]={0};
 int Avl::calls=0;
+int Avl::calls2=0;
 int Avl::num=0;
 
 Avl::Avl()
@@ -18,6 +21,8 @@ Avl::Avl()
     xpos=600;
     ypos=100;
     called =0;
+    ino.setFont(font);
+    preo.setFont(font);
 }
 
 struct node* Avl:: maketree(int b)
@@ -247,6 +252,8 @@ int Avl:: find_min(struct node* a)
 
 void Avl:: display()
 {
+    in="In-order:   ";
+    pre="Pre-order: ";
     int i,j;
     cout<<endl<<"preorder"<<endl;
     preorder(root);
@@ -263,7 +270,9 @@ void Avl:: display()
     bfs(root);
     cout<<"printing array"<<endl;
     container.clear();
+    edges.clear();
     total=0;
+    num=0;
     for(i=0;i<5;i++)
     {
         for(j=0;j<32;j++)
@@ -277,40 +286,45 @@ void Avl:: display()
         cout<<endl;
     }
     ypos=100;
-    setedges(root,container[0].getPosition());
+    if(root!=NULL)
+        setedges(root,root->getPosition());
     cout<<"here";
 }
 
 void Avl:: setedges(struct node* r,sf::Vector2f pos)
 {
     cout<<"no";
+    if(r==NULL)
+        return;
     if(r->left==NULL && r->right==NULL)
         return;
     if(r->left != NULL)
     {
         class edge* e = new edge();
-        e->create(pos,sf::Vector2f (pos.x-75,pos.y+50));
+        e->create(pos,r->left->getPosition());
         edges.push_back(*e);
         num++;
-        setedges(r->left,sf::Vector2f (pos.x-75,pos.y+50));
+        setedges(r->left,r->left->getPosition());
     }
     if(r->right!= NULL)
     {
         class edge* e = new edge();
-        e->create(pos,sf::Vector2f (pos.x+75,pos.y+50));
+        e->create(pos,r->right->getPosition());
         edges.push_back(*e);
         num++;
-        setedges(r->right,sf::Vector2f (pos.x+75,pos.y+50));
+        setedges(r->right,r->right->getPosition());
     }
 
 }
 
 void Avl:: setpos(struct node*r ,int data )
 {
+
     if(r->data==data)
     {
         struct node* c=new node();
         c->Create(xpos,ypos);
+        r->Create(xpos,ypos);
         c->setString(numtostr(data));
         container.push_back(*c);
         total++;
@@ -319,14 +333,19 @@ void Avl:: setpos(struct node*r ,int data )
     }
     else if(data<r->data)
     {
-        xpos-=75;
+        calls++;
+        xpos-=200/calls;
+       // calls++;
         setpos(r->left,data);
     }
     else if(data>r->data)
     {
-        xpos+=75;
+        calls++;
+        xpos+=200/calls;
+       // calls++;
         setpos(r->right,data);
     }
+    calls=0;
 }
 
 //breadthfirstsearch is like printing leaves nodes for all levels
@@ -385,6 +404,8 @@ void Avl::preorder(struct node* a)
         return;
     }
     cout<<a->data<<endl;
+    pre+=numtostr(a->data);
+    pre+=" ";
     preorder(a->left);
     preorder(a->right);
 }
@@ -394,6 +415,8 @@ void Avl:: inorder(struct node* a)
         return;
     inorder(a->left);
     cout<<a->data<<endl;
+    in+=numtostr(a->data);
+    in+=" ";
     inorder(a->right);
 }
 void Avl:: print_height()
@@ -446,6 +469,16 @@ void Avl::render(Window &l_win)
     {
         edges[i].render(l_win);
     }
+    ino.setString(in);
+    preo.setString(pre);
+    ino.setCharacterSize(20);
+    preo.setCharacterSize(20);
+    ino.setFillColor(sf::Color::Magenta);
+    preo.setFillColor(sf::Color::Magenta);
+    preo.setPosition(sf::Vector2f(380,650));
+    ino.setPosition(sf::Vector2f(380,600));
+    l_win.Draw(preo);
+    l_win.Draw(ino);
 }
 
 /*void Avl:: levels(node* root, int level,Window& w)

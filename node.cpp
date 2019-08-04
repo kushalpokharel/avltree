@@ -8,12 +8,12 @@ node::node()
     num++;
     tag=num;
     text.setFont(font);
-    text.setFillColor(sf::Color::Red);
+    text.setFillColor(sf::Color::White);
     text.setCharacterSize(18);
     nodeshape.setRadius(25);
-    nodeshape.setFillColor(sf::Color::Green);
+    nodeshape.setFillColor(sf::Color::Blue);
     nodeshape.setOutlineColor(sf::Color::Magenta);
-    nodeshape.setOutlineThickness(3);
+    nodeshape.setOutlineThickness(5);
 }
 
 void node::Create(int x, int y)
@@ -54,7 +54,7 @@ void node::Render(sf::RenderWindow* l_window)
 
 void node::highlight()
 {
-    nodeshape.setFillColor(sf::Color::Blue);
-    text.setFillColor(sf::Color::Yellow);
+    nodeshape.setFillColor(sf::Color::Green);
+    text.setFillColor(sf::Color::Red);
 }
 

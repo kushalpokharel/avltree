@@ -43,6 +43,8 @@
 		<Unit filename="avl.h" />
 		<Unit filename="boxes.cpp" />
 		<Unit filename="boxes.h" />
+		<Unit filename="edge.cpp" />
+		<Unit filename="edge.h" />
 		<Unit filename="game.cpp" />
 		<Unit filename="game.h" />
 		<Unit filename="main.cpp" />
